@@ -1,0 +1,169 @@
+Machine Learning
+
+Real-Life examples:
+	. E-commerce - Product Recommendation- Amazon Suggests products based on your past searches
+	. Social Media - Content recommendation- Insta recommends reels similar to your interese
+	. Banking(Fraud detection)
+	. Health care(Disease prediction)
+	.Voice Assistants(speech recognition)
+---------------------------------------------------------------------------------------------------------
+
+Definition:
+Machine Learning is a subset of AI that allows computer to learn patterns from data and make predictions or decisions without being explicitly programmed.
+Eg : Think of teaching a child to recognize apples and bananas
+	You show many pictures of apple and bananas(training data).
+	The child learns their shapes and colors(pattern recognition)
+	Later, if you show a new fruit, the child can identify it correctly - this is Machine Learning
+---------------------------------------------------------------------------------------------------------
+
+Types of Machine Learning:
+1. Supervised Learning(Labelled Data)
+	The model learns from labeled data(input-output pairs).
+	Example: Predicting house prices based on area, location, and rooms.
+Use Cases:
+	. Spam Detection(Email is spam or not)
+	. Fraud Detection(Bank detecting fraudlent transactions)
+	. Sales Forecastng(Predict next month's revenue).
+
+2. Un-Supervised Learning(Un-labeled Data)
+	The model identifies hidden patterns in unlabelled data.
+	Example: Grouping customers into segments based on their behavior.
+Use Cases
+	. Customer Segmentation (Grouping Similar customers)
+	. Anomaly Detection ( Finding unusual credit card transactions)
+	. Recommendation Systems(Grouping similar movies or products)
+3. Reinforcement Learning:
+	Reinforcement Learning interacts with environment and learn from them based on rewards.
+	Example: Self driving cars.
+---------------------------------------------------------------------------------------------------------
+Supervised Leaning:
+	Supervised learning are generally categorized into two main types:
+	.Classification - where the goal is to predict discrete labels or categories.
+	.Regression - where the aim is to predict continuous numerical values.
+	
+
+Model in Machine Learning:
+--------------------------------
+	is a mathematical representation of the relationship between input data(features) and output data(labels)
+	Think of it like a function in mathematics:
+	y=f(x)
+	where f is model,x is input features, y is predicted output
+The goal of ML is to learn the best possible function f from the training data so that when new x values come, the model can predict y predictly.
+
+Components of a model:
+---------------------------
+Parameters:
+   These are the values learned during training.
+   They change automatically when the model sees data.
+	Example: 
+	.In linear Regression -> Slope(m) and Intercept(b)
+	.In neural Networks -> weights and biases
+	Parameters = learned values	
+2. Hyperparameters:
+    These are vaues that we set before training.
+    The model does not learn them; instead we choose them.
+	Example:
+	. Learning rate
+	. Number of layers in a neural network
+	. Number of trees in Random Forest
+	. k value in KNN
+	Hyperparameters=model settings.
+3. Model Structure:
+	. Linear model(straight-line relationship)
+	. Decision trees(branching rules)
+	. Neural networks(layers of neurons).
+    Structure = shape/architecture of the model.
+
+---------------------------
+How does a model learn???
+A model learns by adjusting its parameters based on the training data.
+During training:
+. bad prediction -> adjust parameters
+. better prediction -> keep adjusting
+. finally -> model learns the best parameters
+Example: Real-Time Analogy
+	-Thinking of tuning a guitar.
+----------------------------
+
+Loss(Error) Function
+A loss function tells us how wrong the model's prediction is.
+. Small loss -> good prediction
+. Large loss -> bad prediction
+Examples:
+. Regression -> MSE
+. Classification -> Cross Entropy
+
+-----------------------------
+Optimization Goal
+The goal of training is:
+Reduce the loss as much as possible
+We do this by:
+	. Adjusting the parameters
+	. Repeating the process again and again
+-----------------------------
+ML Life Cycle
+	Problem Framing-> Data collection & preparation -> Data Splitting(Train/Test)-> Modeling(Train) -> Evaluation(test) -> Deployment
+------------------------------
+Regression:
+	is a statistical approach to find the correlations between variables(dependent and independent).
+
+Regression algorithms give you a continuous output. That means if you are asked to build a model that predicts the future outcome
+
+** Simple Linear Regression**
+	A simple linear regression model only has two explanatory variables- one dependent and one independent variable.
+Assumptions
+-----------
+-> Linearity: It assumes that  the relation between the data points is linear i.e the plot of the data points shows is linear
+-> Independence: There st be no relationship among the different values of the independent variables
+-> Normality: 
+	      -------------------------
+	      | y=bo+b1x1		|
+	      | y-> dependent variable  |
+	      | bo-> slope              |
+	      | b1->intercept           |
+	      ---------------------------
+--------------------------------
+Multiple Linear Regression:
+
+The dependent variable is predicted based on more than one independent variables.
+	 ---------------------------------
+	|y=bo+b1*x1+b2*x2+..........+bn*xn|
+	 ---------------------------------
+Assumptions:
+-> Linearity
+-> Lack of Multicollinearity
+-> Multivariate normality
+
+
+
+Steps: Data Preprocessing-> ->Predicting the results-> Visualization
+
+---------------------------------------------------
+Polynomial Regression
+---------------------
+is a form of regression analysis in which the relationship between the independent variable x and dependent variable y is modeled as an nth degree polynomial of x. That is, if your dataset holds the characteristic of being curved when plotted in the graph, then you should go with a polynomial regression model instead of Simple or Multiple Linear regression models.
+
+                  f(x)=a0+a1x^+a2x^2+------------+anx^n  a is alpha
+			
+
+
+-------------------------------------------------------------------------------------------------
+OVERFITTING AND UNERFITTING
+------------------------------------------------------
+Regularization in Linear Regression:
+	Learn how regularization prevents overfitting and improves model accuracy
+
+The problem Overfitting:
+	High variance
+	Poor Generalization
+	Complexity
+---------
+Why Regularization:
+-Simpler Models
+-Better Generalization
+-Feature Selection
+
+
+
+
+
