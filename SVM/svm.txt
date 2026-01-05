@@ -1,0 +1,280 @@
+Support Vector Machines:
+1. Introduction to SVM:
+2. Soft Margin and Hard Margin
+3. SVM Math Intuition
+4. Cost Function
+5. Support Vector Regression
+6. SVM Kernels
+7. SVM Kernels implementation
+8. Support Vector Classification
+---------------------------------
+### Introduction
+We have SVC, and SVR- Support Vector Classification & Support Vector Regression
+
+What is a SVM
+SVM is a supervised machine learning algorithm
+Used for:
+    . Classification(SVC)
+    . Regression(SVR)
+Main Goal:
+Draw the best fit line that seperates data points as far as possible
+
+Here each data point is a vector(x1,x2,...)
+
+## Hyperplane:
+ is a decision boundary(line-2D, plane-3D)
+ Mathematical form : w.x +b=0
+## Weigth Vector(w):
+w decides the direction of the Hyperplane
+w is perpendicular to the Hyperplane
+
+Bias(b):
+b shifts the hyperplane up or down
+It does not change direction
+Used to position the boundary correctly
+
+How SVM Classifies a point:
+SVM calculates a score: w·x + b
+If score > 0 → point is positive class
+If score < 0 → point is negative class
+If score = 0 → point lies on boundary
+
+Angle Intuition ::
+Classification depends on the angle between point vector and w
+Acute angle (<90°) → same direction → positive class
+Obtuse angle (>90°) → opposite direction → negative class
+Right angle (90°) → unsure / near boundary
+
+# Margin:
+Margin is the safety gap between classes
+Defined as distance between two parallel boundaries
+Larger margin = better generalization
+SVM always tries to maximize margin
+
+# Marginal Planes:
+Two imaginary lines parallel to hyperplane
+One on positive side
+One on negative side
+They define the margin width
+
+## Support Vectors
+Support vectors are the closest points to the hyperplane
+They touch or lie inside the margin
+Only these points decide the boundary
+Removing them changes the model
+Removing other points does not affect the model
+
+Hard Margin
+No mistakes allowed
+All points must lie outside the margin
+Works only for perfectly separable data
+Rarely used in real life
+
+Soft Margin:
+Allows some points to:
+    Enter the margin
+    Be misclassified
+Used for real-world noisy data
+More practical and stable
+
+Diagram-3
+This diagram shows the SVM decision boundary wᵀx+b=0, with
+two parallel marginal planes +1 and -1. The region between 
+them is the margin. Points touching these margins are support 
+vectors, and points inside the margin represent soft-margin 
+violations allowed in real data.
+
+## Cost Function
+wᵀx1+b=1
+wᵀx2+b=-1
+----------
+wᵀ(x1-x2)=2
+
+divide with unit vector
+i.e:
+Cost function is given by:
+2/||w||
+Distance b/w marginal planes.
+Margin is inversely proportional to ||w||
+Maximum Margnin-> Minimizing ||w||
+    ||w||^2
+min -------
+ w,b   2
+
+
+Hinge Loss
+Diagram-4
+C=7
+
+||w||² / 2 + C Σ ξᵢ
+ξᵢ-> Slack Variable(How badly point i violates the margin)
+    - 0-> Perfectly Classified, outside margin
+    - 0 to 1-> Inside Margin
+    - >1 -> misclassified
+Σ ξᵢ = total mistake amount
+
+“C is how many points we want to avoid misclassification”
+High C-> Hates mistake a lot
+Low C -> Allows mistakes
+
+
+### Final Cost Function
+min(∣∣w∣∣/2+C∑ξi)
+“Choose a boundary that is as safe as possible while not allowing too many mistakes.
+simple way to understand is -> 
+    1st term -> safety
+    2nd term -> mistakes
+    C-> strictness
+----------------------
+### SVR
+SVR is the regression version of SVM
+SVR fits a line or curve
+It allows small errors
+Only large errors are penalized
+Svr Prediction function:
+y = w·x + b
+w controls slope
+b controls position
+
+ε (Epsilon) Tube
+SVR creates a tube around the prediction line
+Tube width is controlled by ε (epsilon)
+Meaning of ε:
+
+ε = error tolerance
+Small prediction errors inside tube are ignored
+
+Point and loss:
+Point inside tube -> loss 0 -> error is acceptabl
+On tube boundary -> Support vector-> loss 0
+Outside tube -> Large error -> loss is >0
+
+### Support Vectors in SVR
+
+Points lying on or outside the ε tube
+These points decide:
+Shape of the regression line
+Width of the tube
+Points inside tube do not affect the model
+
+### Slack Variables:
+
+ξ	Error above upper tube
+ξ*	Error below lower tube
+
+SVR Cost Function:
+SVR minimizes:
+    Flatness of the line
+    Errors outside the tube
+written as:
+(1/2)||w||² + C Σ(ξ + ξ*)
+
+Role of C in SVR:
+
+High C-> Fits data tightly(overfitting risk)
+Low C -> Smooth line(better generalization)
+
+ROle of Epsilon:
+Large ε	More errors ignored
+Small ε	Less tolerance
+
+Advantages of SVR:
+Robust to noise
+Works well for small & medium datasets
+Uses only important points (support vectors)
+
+Disadvantages:
+Slow for large datasets
+Parameter tuning (C, ε, kernel) required
+Less interpretable
+
+
+
+### SVM Kernel:
+Svm normally draws a straight line/plane.
+If data is curved, SVM says:
+"Let me change the space where data lives."
+This is Kernal trick.
+Map data to a higher dimension
+Separate it there with a straight line
+Come back to original space → boundary looks curved
+
+Important point:
+SVM does not actually compute the mapping.
+It computes similarity using a kernel function.
+
+Linear Kernel:
+Red and yellow points separated by a straight line
+Clean separation
+Meaning:
+Data is already linearly separable
+No transformation needed
+
+Use it when :
+Features are smany
+Data is simple
+
+Equation idea:
+K(x, y) = x · y
+
+Polynomial Kernel:
+Straight line fails
+Curved boundary works
+
+What polynomial kernel does:
+Adds interaction features
+Turns straight separation into curved separation
+Example intuition:
+
+From (x₁, x₂)
+Go to (x₁², x₂², x₁x₂)
+Use when:
+
+Data follows polynomial pattern
+Moderate complexity
+
+RBF/Gaussian Kernel:
+-> Data points form clusters
+-> boundary bends smoothly around them
+
+What RBF does
+
+Measures closeness between points
+
+Creates local influence
+
+Very powerful
+
+Why it’s most used:
+Works for almost any shape
+Handles complex data well
+Key parameter: gamma
+High gamma → tight curves (overfitting)
+Low gamma → smooth curves (underfitting)
+
+
+Sigmoid Kernel:
+Behaves like a neural network activation
+Produces S-shaped boundary
+Rarely used
+Hard to tune
+Mostly theoretical
+
+Transform to higher dimension:
+1D data → 2D
+2D data → 3D
+3D data → higher D
+
+Data becomes linearly separable
+SVM draws a straight plane
+When projected back → looks curved
+
+****
+Even with Kernels:
+-SVM Still maximixes margin
+- Uses support vectors
+-Uses hinge loss / ε-tube (for SVR)
+
+***Kernel = change space so that a curve becomes a line
+
+
