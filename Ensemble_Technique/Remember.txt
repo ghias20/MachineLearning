@@ -1,0 +1,6 @@
+1. Understand Problem Statement
+2. Get the Data(kaggle,API...)
+3. Cleaning the data, visualizing & Feature Engineering
+4. Prepare the data
+5. Select the model and Train
+6. Launch, Monitor and Maintain

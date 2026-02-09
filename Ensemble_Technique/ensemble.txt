@@ -1,0 +1,61 @@
+Ensemble Technique:
+    They are Machine Learning methods that combine multiple models usually Weak Learner to
+    produce a single, stronger and more accurate model than any individual model alone.
+Classified into 2 types:
+    . Bagging
+    . Boosting
+Bagging:
+ Multiple models are trained independently on different random samples of datasets and their
+ predictions are combined to produce a final result.
+ It is also called as Bootstrap Aggregation.
+ Why do we need ??
+ -> A Decision tree:
+    . Have high variance
+    . Easily overfits
+    . Changes a lot if data changes slightly
+ To overcome above problems 
+ 1. Bagging reduces variance & makes predictions more stable.
+ How bagging Works??
+ Bootstrap Sampling:
+  1. From the original dataset, create multiple new sub datasets.
+  2. Each dataset is created by random sampling with replacement
+  3. Each Bootstrap dataset has same size as the original
+ Note: (Outoff bag samples)
+ Some data points repeat & some are left out, this is called out off bag samples
+
+ Train Multiple models:
+ 1. Train 1 model perr Bootstrao dataset.
+ 2. usually it is a Decision tree
+ 3. Each tree is trained independently.
+ Make predictions
+    for regression-> Take avg
+    for classification-> voting
+ Final Outcome/Output
+
+ Aggregated prediction is more stable and accurate than a single Decision tree
+
+When to use Bagging:
+1. When dataset is med to large
+2. model is overfitting
+3. Decision tree give unstable results.
+
+### Boosting
+
+Boosting is an ensemble technique where models are trained sequentially and each new model focus more on the mistakes made by the previous model.
+
+### Why Boosting?
+
+Boosting converts many weak learners into a strong learner.
+### How boosting works?
+
+1 Train first weak model 
+
+2 Identify misclassified or high error points 
+
+3 Give more importance to those points(misclassified) 
+
+4 Train next model focusing on them
+
+5 Repeat
+
+6 Combine all models into a final prediction 
