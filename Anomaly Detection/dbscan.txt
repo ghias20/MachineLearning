@@ -1,0 +1,13 @@
+DBSCAN : Density-Based Spatial Clustering of Applications with Noise
+DBSCAN groups data based on density (how close points are).
+
+Key Parameters
+1. EPS(Epsilon): Radian
+2. MinPts(Minimum Points)
+
+
+Anomoly Detecteion Algorithm:
+1. Randomly select a feature
+2. Randomly choose a split value
+3. Repeat Splitting
+4. Count Path length.
